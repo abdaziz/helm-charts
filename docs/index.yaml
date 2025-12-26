@@ -3,9 +3,19 @@ entries:
   spark-history-server:
   - apiVersion: v2
     appVersion: 4.1.0
-    created: "2025-12-26T17:02:31.581736375+01:00"
+    created: "2025-12-26T21:06:58.390642991+01:00"
     description: A Helm Chart for the Spark History Server
-    digest: 30ce5b5a61318897af12ba2c66a63788deb0a59568f1f9c2e860ccf624b6d422
+    digest: 2bc66872b90bcfb1d31456565d14ba34f26bc2ad9b8e80b80030ff87d810fb11
+    name: spark-history-server
+    type: application
+    urls:
+    - https://abdaziz.github.io/helm-charts/spark-history-server-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 4.1.0
+    created: "2025-12-26T21:06:58.390305591+01:00"
+    description: A Helm Chart for the Spark History Server
+    digest: e5b74635b1e705452935c313b442206cefc60e0761673af62ff051cb6c76ee74
     name: spark-history-server
     type: application
     urls:
@@ -13,7 +23,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 4.1.0
-    created: "2025-12-26T17:02:31.581324589+01:00"
+    created: "2025-12-26T21:06:58.38994534+01:00"
     description: A Helm Chart for the Spark History Server
     digest: c2c788c945d65428486bd6dbd1f91af9107d04db7e17aa39105c6e0ed8b771df
     name: spark-history-server
@@ -21,4 +31,4 @@ entries:
     urls:
     - https://abdaziz.github.io/helm-charts/spark-history-server-0.1.0.tgz
     version: 0.1.0
-generated: "2025-12-26T17:02:31.580851649+01:00"
+generated: "2025-12-26T21:06:58.389385195+01:00"
