@@ -3,6 +3,6 @@ apiVersion: v2
 name: spark-history-server
 description: A Helm Chart for the Spark History Server
 type: application
-version: 0.1.4
+version: 0.1.5
 appVersion: 4.1.0
 
