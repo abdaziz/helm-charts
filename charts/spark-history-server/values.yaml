@@ -48,7 +48,7 @@ ingress:
   labels: {}
   annotations: {}
   hosts:
-    - host: spark-history-server.databrin.com
+    - host: 'spark-history-server.databrin.com'
       paths:
         - path: /
           pathType: Prefix
