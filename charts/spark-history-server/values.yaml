@@ -40,16 +40,15 @@ ssl:
 service:
   externalPort: 18080
   internalPort: 18080
-  type: NodePort
+  type: ClusterIP
 
 ingress:
   enabled: false
   labels: {}
   annotations: {}
+  path: /
   hosts:
     - host: spark-hs.local
-      paths:
-        - /
   tls:
     - secretName: spark-hs-tls
       hosts:
