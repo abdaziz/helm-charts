@@ -1,37 +1,29 @@
 {{- if .Values.ingress.enabled -}}
-{{- $fullname := include "spark-history-server.fullname" . -}}
+{{- $serviceName := include "spark-history-server.fullname" . -}}
+{{- $servicePort := .Values.service.externalPort -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ $fullname }}
+  name: {{ template "spark-history-server.fullname" . }}
   labels:
-    app.kubernetes.io/name: {{ include "spark-history-server.name" . }}
-    helm.sh/chart: {{ include "spark-history-server.chart" . }}
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    app: {{ template "spark-history-server.name" . }}
+    chart: {{ template "spark-history-server.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+{{- with .Values.ingress.annotations }}
   annotations:
-{{- range $key, $value := .Values.ingress.annotations }}
-      {{ $key }}: {{ $value | quote }}
+{{ toYaml . | indent 4 }}
 {{- end }}
 spec:
   rules:
-    {{- range $host := .Values.ingress.hosts }}
-    - host: {{ $host }}
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
-        - path: {{ $.Values.ingress.path }}
-          backend:
-            serviceName: {{ $fullname }}
-            servicePort: {{ $.Values.service.internalPort }}
-    {{- end -}}
-  {{- if .Values.ingress.tls }}
-  tls:
-  {{- range .Values.ingress.tls }}
-    - hosts:
-      {{- range .hosts }}
-        - {{ . | quote }}
-      {{- end }}
-      secretName: {{ .secretName }}
-  {{- end }}
-{{- end -}}
-{{- end -}}
+          - path: {{ .Values.ingress.path }}
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ $serviceName }}
+                port:
+                  number: {{ $servicePort }}
+{{- end }}
