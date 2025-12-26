@@ -32,6 +32,7 @@ s3:
   disableCertChecking: false
 
 ssl:
+  enabled: false
   keystoreSecretName: ''
   keystorePassword: ''
   truststoreSecretName: ''
