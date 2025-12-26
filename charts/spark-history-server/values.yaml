@@ -1,0 +1,73 @@
+# Default values for spark-hs-chart.
+#
+replicaCount: 1
+
+image:
+  repository: quay.io/tcarland/spark
+  tag: v4.1.0-elara-2512.20
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: 'spark'
+
+podSecurityContext:
+  runAsUser: 185
+  runAsGroup: 1000
+  fsGroup: 1000
+  runAsNonRoot: true
+
+s3:
+  enabled: true
+  region: ''
+  endpoint: ''
+  accessKey: ''
+  secretKey: ''
+  logDirectory: 's3a://spark/spark-logs'
+  disableCertChecking: false
+
+ssl:
+  keystoreSecretName: 'spark-hs-keystore'
+  keystorePassword: ''
+  truststoreSecretName: 'spark-hs-truststore'
+  truststorePassword: 'changeit'
+
+service:
+  externalPort: 18080
+  internalPort: 18080
+  type: NodePort
+
+ingress:
+  enabled: false
+  labels: {}
+  annotations: {}
+  hosts:
+    - host: spark-hs.local
+      paths:
+        - /
+  tls:
+    - secretName: spark-hs-tls
+      hosts:
+        - spark-hs.local
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+autoscaling:
+  enabled: false
