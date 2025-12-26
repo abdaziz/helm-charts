@@ -32,9 +32,9 @@ s3:
   disableCertChecking: false
 
 ssl:
-  keystoreSecretName: 'spark-hs-keystore'
+  keystoreSecretName: ''
   keystorePassword: ''
-  truststoreSecretName: 'spark-hs-truststore'
+  truststoreSecretName: ''
   truststorePassword: 'changeit'
 
 service:
@@ -46,9 +46,12 @@ ingress:
   enabled: false
   labels: {}
   annotations: {}
-  path: /
   hosts:
     - host: spark-hs.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
   tls:
     - secretName: spark-hs-tls
       hosts:
