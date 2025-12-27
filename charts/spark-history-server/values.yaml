@@ -26,8 +26,6 @@ s3:
   enabled: true
   region: ''
   endpoint: ''
-  #accessKey: ''
-  #secretKey: ''
   existingSecret: my-s3-credentials
   accessKeyKey: accessKey
   secretKeyKey: secretKey
