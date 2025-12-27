@@ -29,11 +29,11 @@ spec:
                   number: {{ $servicePort }}
 {{- end }}
 {{- if .Values.ingress.tls }}
-  tls:
-  {{- range .Values.ingress.tls }}
-    - hosts:
-      {{- range .hosts }}
-        - {{ . | quote }}
-      {{- end }}
-      secretName: {{ .secretName }}
-  {{- end }}
+tls:
+{{- range .Values.ingress.tls }}
+  - hosts:
+    {{- range .hosts }}
+      - {{ . | quote }}
+    {{- end }}
+    secretName: {{ .secretName }}
+{{- end }}
