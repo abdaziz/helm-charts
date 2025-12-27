@@ -41,7 +41,7 @@ spec:
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "spark-history-server.name" . }}-s3
+                  name: {{ .Release.Namespace }}-s3
                   key: secretKey
             - name: SPARK_NO_DAEMONIZE
               value: "false"
