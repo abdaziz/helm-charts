@@ -44,16 +44,15 @@ service:
   type: ClusterIP
 
 ingress:
-  enabled: false
-  labels: {}
-  annotations: {}
+  enabled: true
+  ingressClassName: nginx
+  annotations:
+    cert-manager.io/cluster-issuer: databrin-ca-issuer
+  path: /
   hosts:
-    - host: 'spark-history-server.databrin.com'
-      paths:
-        - path: /
-          pathType: Prefix
+    - spark-history-server.databrin.com
   tls:
-    - secretName: spark-hs-tls
+    - secretName: spark-history-server.databrin.com
       hosts:
         - spark-history-server.databrin.com
 
