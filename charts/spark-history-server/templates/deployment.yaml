@@ -36,13 +36,13 @@ spec:
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Namespace }}-s3
-                  key: accessKey
+                  name: {{ .Values.s3.existingSecret }}
+                  key: {{ .Values.s3.accessKeyKey }}
             - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Release.Namespace }}-s3
-                  key: secretKey
+                  name: {{ .Values.s3.existingSecret }} 
+                  key: {{ .Values.s3.secretKeyKey }}
             - name: SPARK_NO_DAEMONIZE
               value: "false"
             - name: SPARK_HISTORY_OPTS

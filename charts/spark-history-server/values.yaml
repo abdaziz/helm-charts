@@ -26,8 +26,11 @@ s3:
   enabled: true
   region: ''
   endpoint: ''
-  accessKey: ''
-  secretKey: ''
+  #accessKey: ''
+  #secretKey: ''
+  existingSecret: my-s3-credentials
+  accessKeyKey: accessKey
+  secretKeyKey: secretKey
   logDirectory: 's3a://spark/spark-logs'
   disableCertChecking: false
 
