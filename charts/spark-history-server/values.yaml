@@ -49,8 +49,7 @@ ingress:
   annotations:
     cert-manager.io/cluster-issuer: databrin-ca-issuer
   path: /
-  hosts:
-    - spark-history-server.databrin.com
+  host: spark-history-server.databrin.com
   tls:
     - secretName: spark-history-server.databrin.com
       hosts:
