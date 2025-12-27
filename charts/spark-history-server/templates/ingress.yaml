@@ -10,9 +10,9 @@ metadata:
     chart: {{ template "spark-history-server.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-{{- with .Values.ingress.annotations }}
   annotations:
-{{ toYaml . | indent 4 }}
+{{- with .Values.ingress.annotations }}
+{{- toYaml . | nindent 4 }}
 {{- end }}
 spec:
   ingressClassName: {{ .Values.ingress.ingressClassName }}
