@@ -3,8 +3,8 @@
 replicaCount: 1
 
 image:
-  repository: quay.io/tcarland/spark
-  tag: v4.1.0-elara-2512.20
+  repository: quay.io/abdazizg/spark
+  tag: 4.0.0-s3
   pullPolicy: IfNotPresent
 
 imagePullSecrets: []
