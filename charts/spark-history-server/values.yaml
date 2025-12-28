@@ -48,13 +48,13 @@ ingress:
   enabled: true
   ingressClassName: nginx
   annotations:
-    cert-manager.io/cluster-issuer: databrin-ca-issuer
+    cert-manager.io/cluster-issuer: example-ca-issuer
   path: /
-  host: spark-history-server.databrin.com
+  host: spark-history-server.example.com
   tls:
-    - secretName: spark-history-server.databrin.com
+    - secretName: spark-history-server.example.com
       hosts:
-        - spark-history-server.databrin.com
+        - spark-history-server.example.com
 
 resources:
   limits:
